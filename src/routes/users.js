@@ -6,4 +6,4 @@ router.get('/', function(req, res, next) {
   res.send({ payload: users });
 });
 
-module.exports = router;
+le.exports = router;
