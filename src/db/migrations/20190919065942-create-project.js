@@ -6,16 +6,24 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        underscored: true,
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        underscored: true,
         type: Sequelize.INTEGER
       },
       name: {
+        underscored: true,
         type: Sequelize.STRING
       },
       createdAt: {
+        underscored: true,
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
+        underscored: true,
         allowNull: false,
         type: Sequelize.DATE
       }
