@@ -1,15 +1,15 @@
 import _ from 'lodash'
 import models from '../db/models'
 import express from 'express';
-const router = express.Router();
+const usersRouter = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+usersRouter.get('/', function(req, res, next) {
   models.User.findAll().then(users => res.send(users));
 });
 
 /* GET user item. */
-router.get('/:user_id', function(req, res, next) {
+usersRouter.get('/:user_id', function(req, res, next) {
   models.User.findAll({
     where: {
       id: req.params.user_id
@@ -18,7 +18,7 @@ router.get('/:user_id', function(req, res, next) {
 });
 
 /* Put user. */
-router.put('/:user_id', function(req, res, next) {
+usersRouter.put('/:user_id', function(req, res, next) {
   models.User.update({
     email: req.body.email,
     firstName: req.body.firstName,
@@ -31,7 +31,7 @@ router.put('/:user_id', function(req, res, next) {
 });
 
 /* Post user. */
-router.post('/', function(req, res, next) {
+usersRouter.post('/', function(req, res, next) {
   models.User.create({
     email: req.body.email,
     firstName: req.body.firstName,
@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
 });
 
 /* Delete user. */
-router.delete('/:user_id', function(req, res, next) {
+usersRouter.delete('/:user_id', function(req, res, next) {
   models.User.destroy({
     where: {
       id: req.params.user_id
@@ -48,4 +48,4 @@ router.delete('/:user_id', function(req, res, next) {
   }).then(deleteupdated => res.send({ deleteupdated }));
 });
 
-export default router;
+export default usersRouter;
