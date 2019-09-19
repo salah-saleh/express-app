@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
+import projectsRouter from './routes/projects';
 const app = express();
 
 app.use(logger('dev'));
@@ -14,5 +15,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/projects', projectsRouter);
 
 export default app;
