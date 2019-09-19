@@ -7,6 +7,7 @@
 import app from '../app';
 import debugLib from 'debug';
 import http from 'http';
+import models from '../db/models'
 const debug = debugLib('your-project-name:server');
 
 /**
@@ -26,9 +27,11 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+models.sequelize.sync().then(result => {
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+})
 
 /**
  * Normalize a port into a number, string, or false.
